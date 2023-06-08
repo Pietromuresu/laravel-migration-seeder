@@ -40,7 +40,7 @@
                 <tbody>
                     @foreach ($trains as $train)
 
-                    <tr>
+                    <tr class="{{$train->is_deleted === 1 ? 'table-danger' : ''}}">
                         <th scope="row">{{$train->id}}</th>
                         <td>{{$train->train_number}}</td>
                         <td>{{$train->departure_station}}</td>
