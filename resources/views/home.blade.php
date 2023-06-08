@@ -20,24 +20,41 @@
     <main class="bg-light vh-100">
         <div class="container">
 
-            <h1 class="text-center">Trains</h1>
+            <h1 class="text-center py-5">Trains</h1>
 
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">From</th>
+                    <th scope="col">To</th>
+                    <th scope="col">Departure Date</th>
+                    <th scope="col">Arrival Date</th>
+                    <th scope="col">Cars</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">On Time</th>
+                    <th scope="col">Deleted</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
+                    @foreach ($trains as $train)
+
+                    <tr>
+                        <th scope="row">{{$train->id}}</th>
+                        <td>{{$train->train_number}}</td>
+                        <td>{{$train->departure_station}}</td>
+                        <td>{{$train->arrival_station}}</td>
+                        <td>{{$train->departure_hour}}</td>
+                        <td>{{$train->arrival_hour}}</td>
+                        <td>{{$train->carriages_number}}</td>
+                        <td>{{$train->company}}</td>
+
+                        <td>{{$train->is_on_time === 0 ? 'LATE' : 'On Time'}}</td>
+                        <td>{{$train->is_deleted === 0 ? '  ' : 'DELETED'}}</td>
+
+                    </tr>
+                    @endforeach
                 </tbody>
               </table>
 
